@@ -1,0 +1,41 @@
+.homeContainer {
+  padding: 20px;
+}
+.title {
+  padding: 20px;
+}
+.createtodocontainer {
+  width: 687px;
+  height: 538px;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  /* Gray 5 */
+
+  background: #e0e0e0;
+  border-radius: 63px;
+}
+.buttonContainer {
+  float: right;
+}
+
+.logoutContainer {
+  float: left;
+}
+
+#createTodoButton {
+  background-color: #20504c;
+  border-radius: 6px;
+  border: none;
+  color: white;
+}
+
+.divider {
+  margin-top: 50px;
+}
+
+.option {
+  width: 200px;
+}

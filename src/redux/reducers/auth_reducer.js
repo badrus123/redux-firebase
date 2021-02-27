@@ -1,9 +1,9 @@
-import { loginTypes } from '../actions/auth_action';
+import { loginTypes } from '../actions/auth_action'
 
 let authInitialState = {
   type: loginTypes.AUTH_LOGIN,
   loading: false,
-  authorized: false
+  authorized: false,
 }
 
 export const authReducer = (state = authInitialState, action) => {
@@ -12,21 +12,21 @@ export const authReducer = (state = authInitialState, action) => {
       return {
         type: action.type,
         loading: action.loading,
-        authorized: action.authorized
-      };
-    case loginTypes.AUTH_LOGIN_SUCCESS:
+        authorized: action.authorized,
+      }
+    case loginTypes.LOGIN_SUCCESS:
       return {
         type: action.type,
         loading: action.loading,
-        authorized: action.authorized
-      };
+        authorized: action.authorized,
+      }
     case loginTypes.AUTH_LOGIN_ERROR:
       return {
         type: action.type,
         loading: action.loading,
-        authorized: action.authorized
-      };
+        authorized: action.authorized,
+      }
     default:
-      return state;
+      return state
   }
 }

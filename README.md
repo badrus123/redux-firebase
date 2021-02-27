@@ -1,27 +1,59 @@
-# Todo Apps
+# DAY ONE
 
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
+## Requirements
 
+For development, you will only need Node.js installed on your environement .
+And please use the appropriate [Prettier](https://prettier.io/) plugin for your Editor (mandatory).
 
-### Tech
+### Node
 
-Todo Apps uses a number of open source projects to work properly:
+[Node](http://nodejs.org/) is really easy to install & now include [NPM](https://npmjs.org/).
+You should be able to run the following command after the installation procedure
+below.
 
-* [ReactJS](https://facebook.github.io/react-native)
-* [Firebase](https://https://firebase.google.com)
-* [Ant Design](https://ant.design)
-* [Redux](https://redux.js.org/)
+    $ node --version
+    12.x.x - 14.x.x
 
-### Installation
+    $ npm --version
+    6.x.x
 
-```javascript
-git clone https://github.com/ghazifardhan/reactjs_todo_list_react_redux.git
-cd reactjs_todo_list_react_redux
-yarn install
-yarn start
-```
+#### Node installation on OS X
 
-Owner
-----
+You will need to use a Terminal. On OS X, you can find the default terminal in
+`/Applications/Utilities/Terminal.app`.
 
-Ghazi Fadil Ramadhan
+Please install [Homebrew](http://brew.sh/) if it's not already done with the following command.
+
+    $ ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+
+If everything when fine, you should run
+
+    brew install node
+
+#### Node installation on Linux
+
+    sudo apt-get install python-software-properties
+    sudo add-apt-repository ppa:chris-lea/node.js
+    sudo apt-get update
+    sudo apt-get install nodejs
+
+#### Node installation on Windows
+
+Just go on [official Node.js website](http://nodejs.org/) & grab the installer.
+Also, be sure to have `git` available in your PATH, `npm` might need it.
+
+---
+
+## Install
+
+    $ git clone https://github.com/badrus123/redux-firebase
+    $ cd redux-firebase
+    $ npm install
+
+## Start & watch
+
+    $ npm run dev / next build
+
+## Simple build for production
+
+    $ npm run build

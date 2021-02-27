@@ -1,59 +1,57 @@
-
-import { todosRef } from "../../utils/firebase";
+import { todosRef } from '../../firebase/firebase'
 
 export const listTodoTypes = {
-  LIST_TODO: "LIST_TODO",
-  LIST_TODO_SUCCESS: "LIST_TODO_SUCCESS",
-  LIST_TODO_ERROR: "LIST_TODO_ERROR",
+  LIST_TODO: 'LIST_TODO',
+  LIST_TODO_SUCCESS: 'LIST_TODO_SUCCESS',
+  LIST_TODO_ERROR: 'LIST_TODO_ERROR',
 }
 
 export const SortBy = {
-  ALPHABETICAL: "header",
-  CREATEDAT: "createdAt"
+  ALPHABETICAL: 'header',
+  CREATEDAT: 'createdAt',
 }
 
 export function initializeCreateTodo() {
-  return dispatch => {
+  return (dispatch) => {
     dispatch({
       type: listTodoTypes.LIST_TODO,
       result: null,
       loading: true,
-      error: null
-    });
+      error: null,
+    })
   }
 }
 
 export function listTodo(username, sortBy, ascDesc) {
-  return dispatch => {
+  return (dispatch) => {
     dispatch({
       type: listTodoTypes.LIST_TODO,
       result: null,
       loading: true,
-      error: null
-    });
+      error: null,
+    })
 
-    todosRef.orderBy(sortBy, ascDesc)
-      .onSnapshot((result) => {
-        console.log(result);
+    todosRef.orderBy(sortBy, ascDesc).onSnapshot((result) => {
+      console.log(result)
 
-        var datas = [];
-        result.forEach((item) => {
-          datas.push({
-            id: item.id,
-            ...item.data()
-          });
+      var datas = []
+      result.forEach((item) => {
+        datas.push({
+          id: item.id,
+          ...item.data(),
         })
+      })
 
-        dispatch({
-          type: listTodoTypes.LIST_TODO_SUCCESS,
-          result: datas,
-          loading: false,
-          error: null
-        });
-      });
+      dispatch({
+        type: listTodoTypes.LIST_TODO_SUCCESS,
+        result: datas,
+        loading: false,
+        error: null,
+      })
+    })
   }
 }
 
 export function deleteTodosById(id) {
-  todosRef.doc(id).delete();
+  todosRef.doc(id).delete()
 }

@@ -2,17 +2,17 @@ import { Select } from 'antd'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getMe, getMeTypes } from '../../redux/actions/get_me_action'
-import './homes.scss'
+import './home.scss'
 import { withRouter } from 'react-router-dom'
 import {
   listTodo,
   listTodoTypes,
   SortBy,
 } from '../../redux/actions/list_todos_action'
-import TodoCard from './widgets/todo_card'
-import CreateTodoButton from './widgets/create_todo_button'
-import LogoutButton from './widgets/logout_button'
-
+import TodoCard from './component/Card'
+import CreateTodoButton from './component/Button'
+import LogoutButton from './component/logout_button'
+import { Row, Col } from 'antd'
 function Homes(props) {
   const getMeState = useSelector((state) => state.getMeReducer)
   const listTodoState = useSelector((state) => state.listTodoReducer)
@@ -24,15 +24,14 @@ function Homes(props) {
   }, [])
 
   useEffect(() => {
-    console.log(getMeState)
     if (getMeState.type === getMeTypes.GET_ME_SUCCESS) {
       dispatch(listTodo(getMeState.username, SortBy.CREATEDAT, 'desc'))
     }
   }, [getMeState])
 
-  useEffect(() => {
-    console.log(listTodoState)
-  }, [listTodoState])
+  // useEffect(() => {
+  //   // console.log(listTodoState)
+  // }, [listTodoState])
 
   return (
     <div className='homeContainer'>
@@ -56,24 +55,36 @@ function Homes(props) {
         </Select>
 
         <div style={{ margin: 10 }} />
-
-        {listTodoState.type === listTodoTypes.LIST_TODO_SUCCESS ? (
-          listTodoState.result.length > 0 ? (
-            listTodoState.result.map((item, index) => {
-              return (
-                <TodoCard key={index} item={item} navigation={props.history} />
-              )
-            })
+        <Row>
+          {listTodoState.type === listTodoTypes.LIST_TODO_SUCCESS ? (
+            listTodoState.result.length > 0 ? (
+              listTodoState.result.map((item, index) => {
+                return (
+                  <Col
+                    xs={24}
+                    sm={24}
+                    md={{ span: 6, offset: 1 }}
+                    lg={{ span: 6, offset: 1 }}
+                    xl={{ span: 6, offset: 1 }}>
+                    <TodoCard
+                      key={index}
+                      item={item}
+                      navigation={props.history}
+                    />
+                  </Col>
+                )
+              })
+            ) : (
+              <div>
+                <h4>Empty</h4>
+              </div>
+            )
           ) : (
             <div>
-              <h4>Empty</h4>
+              <h4>Loading</h4>
             </div>
-          )
-        ) : (
-          <div>
-            <h4>Loading</h4>
-          </div>
-        )}
+          )}
+        </Row>
       </div>
     </div>
   )
